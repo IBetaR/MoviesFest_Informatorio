@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CastMemberController {
 
-    private final CastMemberRepository castMemberRepository;
+    public final CastMemberRepository castMemberRepository;
 
     @Autowired
     public CastMemberController(CastMemberRepository castMemberRepository) {

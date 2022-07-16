@@ -21,10 +21,7 @@ public class CastMember {
     private LocalDate birthDate;
 
     @ManyToMany(mappedBy = "castMembers")
-    private final Set<Film> films = new HashSet<>();
-
-    public CastMember() {
-    }
+    public final Set<Film> films = new HashSet<>();
 
     public CastMember(String name, String lastname, Integer dni, LocalDate birthDate) {
 
@@ -32,6 +29,9 @@ public class CastMember {
         this.name = name;
         this.lastname = lastname;
         this.birthDate = birthDate;
+    }
+
+    public CastMember() {
     }
 
     public Set<Film> getFilms() {
@@ -76,19 +76,6 @@ public class CastMember {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CastMember that = (CastMember) o;
-        return Objects.equals(id, that.id) && Objects.equals(dni, that.dni) && Objects.equals(name, that.name) && Objects.equals(lastname, that.lastname) && Objects.equals(birthDate, that.birthDate) && Objects.equals(films, that.films);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, dni, name, lastname, birthDate, films);
     }
 
     @Override

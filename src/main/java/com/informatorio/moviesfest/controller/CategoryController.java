@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CategoryController {
 
-    private final CategoryRepository categoryRepository;
+    public final CategoryRepository categoryRepository;
 
     @Autowired
     public CategoryController(CategoryRepository categoryRepository) {

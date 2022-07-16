@@ -1,12 +1,10 @@
 package com.informatorio.moviesfest.controller;
-
 import com.informatorio.moviesfest.converter.FilmConverter;
 import com.informatorio.moviesfest.domain.CastMember;
 import com.informatorio.moviesfest.domain.Film;
 import com.informatorio.moviesfest.dto.FilmDTO;
 import com.informatorio.moviesfest.repository.CastMemberRepository;
 import com.informatorio.moviesfest.repository.FilmRepository;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,12 +30,12 @@ public class FilmController {
     }
 
     @PostMapping("/film")
-    public Film createFilm(@RequestBody Film film){
+    public Film createFilm (@RequestBody Film film){
         return filmRepository.save(film);
     }
 
     @PostMapping("/film/{idFilm}/cast-member")
-    public FilmDTO addCastMemberToMovie(@PathVariable Long idFilm, @RequestBody @NotNull List<Long> castMemberIds) {
+    public FilmDTO addCastMemberToMovie (@PathVariable Long idFilm, @RequestBody List<Long> castMemberIds) {
         Film film = filmRepository.findById(idFilm).orElse(null);
         List<CastMember> castMembers = castMemberIds.stream()
                 .map(id -> castMemberRepository.findById(id))

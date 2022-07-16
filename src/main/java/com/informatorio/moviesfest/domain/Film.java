@@ -19,7 +19,7 @@ public class Film {
     private LocalDate creationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Category category;
+    public Category category;
     //@ManyToOne annotation: goes to left side class owner (Film only has one category)
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -27,13 +27,13 @@ public class Film {
             name = "film_castMember",
             joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "castMember_id"))
-    private Set<CastMember> castMembers = new HashSet<>();
+    public Set<CastMember> castMembers = new HashSet<>();
 
     public Film() {
     }
 
 
-    public Film(String title, String director, String description, String duration, Category category, LocalDate creationDate) {
+    public Film (String title, String director, String description, String duration, Category category, LocalDate creationDate) {
         this.title = title;
         this.director = director;
         this.description = description;
@@ -106,6 +106,10 @@ public class Film {
 
     public Set<CastMember> getCastMembers() {
         return castMembers;
+    }
+
+    public void setCastMembers(Set<CastMember> castMembers) {
+        this.castMembers = castMembers;
     }
 
     @Override
